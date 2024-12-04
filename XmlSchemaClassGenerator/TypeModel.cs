@@ -891,6 +891,8 @@ namespace XmlSchemaClassGenerator
                         returnExpression = Configuration.SerializeEmptyCollections ? notNullExpression : notNullOrEmptyExpression;
                     }
 
+                    // Todo: investigate overridable returnExpression
+
                     var returnStatement = new CodeMethodReturnStatement(returnExpression);
 
                     if (Configuration.UseShouldSerializePattern)
