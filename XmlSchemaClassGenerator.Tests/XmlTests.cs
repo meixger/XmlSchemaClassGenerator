@@ -2671,7 +2671,8 @@ namespace Test
                 NamespaceProvider = new NamespaceProvider
                 {
                     GenerateNamespace = key => "Test"
-                }
+                },
+                CollectionSettersMode = CollectionSettersMode.PublicWithoutConstructorInitialization
             };
             var assembly = Compiler.Generate(nameof(TestNullableReferenceAttributes), NullableReferenceAttributesPattern, generator);
             void assertNullable(string typename, bool nullable)
@@ -2688,7 +2689,7 @@ namespace Test
                 Assert.Equal(nullable, hasMaybeNullAttribute);
             }
             assertNullable("Test.ElementReferenceNullable", true);
-            assertNullable("Test.ElementReferenceList", false);
+            assertNullable("Test.ElementReferenceListNullable", true);
             assertNullable("Test.ElementReferenceNonNullable", false);
             assertNullable("Test.AttributeReferenceNullable", true);
             assertNullable("Test.AttributeReferenceNonNullable", false);
